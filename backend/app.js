@@ -93,6 +93,46 @@ app.get('/api/categories/:id', async (req, res) => {
     }
 });
 
+// PUT /api/categories/:id - Update a menu category
+app.put('/api/categories/:id', async (req, res) => {
+    try {
+        const categoryId = req.params.id;
+        const { name, restaurant_id } = req.body;
+
+        // Basic validation
+        if (!name) {
+            return res.status(400).json({ message: 'Category name is required for update.' });
+        }
+
+        const category = await db.MenuCategory.findByPk(categoryId);
+
+        if (!category) {
+            return res.status(404).json({ message: 'Menu category not found.' });
+        }
+
+        // Update the category instance
+        category.name = name;
+        if (restaurant_id !== undefined) { // Only update restaurant_id if provided
+            category.restaurant_id = restaurant_id;
+        }
+
+        await category.save(); // Save the changes to the database
+
+        res.status(200).json({
+            message: 'Menu category updated successfully!',
+            category: category
+        });
+
+    } catch (error) {
+        console.error('Error updating menu category:', error);
+        if (error.name === 'SequelizeValidationError') {
+            const messages = error.errors.map(err => err.message);
+            return res.status(400).json({ message: 'Validation error', errors: messages });
+        }
+        res.status(500).json({ message: 'Error updating menu category', error: error.message });
+    }
+});
+
 // Import other routes after defining direct routes
 let authRoutes, userRoutes;
 
