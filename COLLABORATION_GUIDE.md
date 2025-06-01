@@ -260,6 +260,33 @@ cd Ketso_Cafe
   }
   ```
 
+#### Update Category
+- **Method**: PUT
+- **URL**: /api/categories/:id
+- **Description**: Updates a specific menu category by its ID
+- **URL Parameters**: 
+  - `id`: The ID of the menu category to update
+- **Request Body**:
+  ```json
+  {
+    "name": "Updated Category Name",
+    "restaurant_id": 1  // Optional
+  }
+  ```
+- **Success Response** (200 OK):
+  ```json
+  {
+    "message": "Menu category updated successfully!",
+    "category": {
+      "id": 1,
+      "name": "Updated Category Name",
+      "restaurant_id": 1,
+      "createdAt": "2023-06-01T12:00:00.000Z",
+      "updatedAt": "2023-06-01T12:30:00.000Z"
+    }
+  }
+  ```
+
 ## Testing the API
 
 You can test the API endpoints using tools like [Postman](https://www.postman.com/) or [curl](https://curl.se/):
@@ -279,6 +306,13 @@ You can test the API endpoints using tools like [Postman](https://www.postman.co
 3. Get a specific menu category (replace 1 with the actual ID):
    ```bash
    curl http://localhost:3005/api/categories/1
+   ```
+
+4. Update a menu category (replace 1 with the actual ID):
+   ```bash
+   curl -X PUT http://localhost:3005/api/categories/1 \
+     -H "Content-Type: application/json" \
+     -d '{"name": "Updated Appetizers"}'
    ```
 
 ## Next Steps
