@@ -142,5 +142,30 @@ exports.updateMenuCategory = async (req, res) => {
     }
 };
 
-// We will add the delete function later.
-// exports.deleteMenuCategory = async (req, res) => { ... }; 
+// 5. Delete a Menu Category
+// Method: DELETE
+// Route: /api/categories/:id (to be defined in app.js)
+exports.deleteMenuCategory = async (req, res) => {
+    try {
+        const categoryId = req.params.id;
+        const category = await MenuCategory.findByPk(categoryId);
+
+        if (!category) {
+            return res.status(404).json({ message: 'Menu category not found.' });
+        }
+
+        await category.destroy(); // Delete the category instance
+
+        res.status(200).json({ message: 'Menu category deleted successfully!' });
+        // Alternatively, you can send a 204 No Content status, which is common for DELETE operations
+        // res.status(204).send();
+
+    } catch (error) {
+        console.error('Error deleting menu category:', error);
+        // Consider if there are foreign key constraints that might prevent deletion
+        // For example, if MenuItems must have a category_id, you might need to handle
+        // how associated MenuItems are dealt with (e.g., set category_id to null, or delete them too - cascading delete).
+        // For now, we assume simple deletion.
+        res.status(500).json({ message: 'Error deleting menu category', error: error.message });
+    }
+}; 

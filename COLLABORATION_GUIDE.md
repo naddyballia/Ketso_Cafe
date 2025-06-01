@@ -287,6 +287,20 @@ cd Ketso_Cafe
   }
   ```
 
+#### Delete Category
+- **Method**: DELETE
+- **URL**: /api/categories/:id
+- **Description**: Deletes a specific menu category by its ID
+- **URL Parameters**: 
+  - `id`: The ID of the menu category to delete
+- **Success Response** (200 OK):
+  ```json
+  {
+    "message": "Menu category deleted successfully!"
+  }
+  ```
+- **Note**: If the category has associated menu items, deletion might fail due to foreign key constraints.
+
 ## Testing the API
 
 You can test the API endpoints using tools like [Postman](https://www.postman.com/) or [curl](https://curl.se/):
@@ -313,6 +327,11 @@ You can test the API endpoints using tools like [Postman](https://www.postman.co
    curl -X PUT http://localhost:3005/api/categories/1 \
      -H "Content-Type: application/json" \
      -d '{"name": "Updated Appetizers"}'
+   ```
+
+5. Delete a menu category (replace 1 with the actual ID):
+   ```bash
+   curl -X DELETE http://localhost:3005/api/categories/1
    ```
 
 ## Next Steps

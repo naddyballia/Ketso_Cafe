@@ -133,6 +133,26 @@ app.put('/api/categories/:id', async (req, res) => {
     }
 });
 
+// DELETE /api/categories/:id - Delete a menu category
+app.delete('/api/categories/:id', async (req, res) => {
+    try {
+        const categoryId = req.params.id;
+        const category = await db.MenuCategory.findByPk(categoryId);
+
+        if (!category) {
+            return res.status(404).json({ message: 'Menu category not found.' });
+        }
+
+        await category.destroy(); // Delete the category instance
+
+        res.status(200).json({ message: 'Menu category deleted successfully!' });
+
+    } catch (error) {
+        console.error('Error deleting menu category:', error);
+        res.status(500).json({ message: 'Error deleting menu category', error: error.message });
+    }
+});
+
 // Import other routes after defining direct routes
 let authRoutes, userRoutes;
 
