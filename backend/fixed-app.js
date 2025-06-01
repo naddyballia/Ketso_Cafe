@@ -1,0 +1,137 @@
+// backend/fixed-app.js
+const express = require('express');
+const db = require('./config/database'); // Import the db object
+require('dotenv').config(); // Ensure environment variables are loaded
+
+// Create Express app
+const app = express();
+const port = process.env.PORT || 3001; // Use port from .env or default to 3001
+
+// Middleware to parse JSON bodies
+app.use(express.json());
+
+// Debug middleware to log all requests
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
+});
+
+// Basic root route
+app.get('/', (req, res) => {
+    res.send('Hello from Ketso Cafe Backend (Fixed Version)');
+});
+
+// Define menu category routes directly
+app.get('/api/categories', async (req, res) => {
+    try {
+        const categories = await db.MenuCategory.findAll({
+            order: [['name', 'ASC']]
+        });
+        
+        res.status(200).json({
+            message: 'Menu categories fetched successfully!',
+            count: categories.length,
+            categories: categories
+        });
+    } catch (error) {
+        console.error('Error fetching menu categories:', error);
+        res.status(500).json({ 
+            message: 'Error fetching menu categories', 
+            error: error.message 
+        });
+    }
+});
+
+app.post('/api/categories', async (req, res) => {
+    try {
+        const { name, restaurant_id } = req.body;
+        
+        // Basic validation
+        if (!name) {
+            return res.status(400).json({ message: 'Category name is required.' });
+        }
+        
+        const newCategory = await db.MenuCategory.create({
+            name,
+            restaurant_id: restaurant_id || null
+        });
+        
+        res.status(201).json({
+            message: 'Menu category created successfully!',
+            category: newCategory
+        });
+    } catch (error) {
+        console.error('Error creating menu category:', error);
+        if (error.name === 'SequelizeValidationError') {
+            const messages = error.errors.map(err => err.message);
+            return res.status(400).json({ message: 'Validation error', errors: messages });
+        }
+        res.status(500).json({ 
+            message: 'Error creating menu category', 
+            error: error.message 
+        });
+    }
+});
+
+app.get('/api/categories/:id', async (req, res) => {
+    try {
+        console.log('Route handler called for ID:', req.params.id);
+        const categoryId = req.params.id;
+        const category = await db.MenuCategory.findByPk(categoryId);
+        
+        if (!category) {
+            return res.status(404).json({ message: 'Menu category not found.' });
+        }
+        
+        res.status(200).json({
+            message: 'Menu category fetched successfully!',
+            category: category
+        });
+    } catch (error) {
+        console.error('Error fetching menu category by ID:', error);
+        res.status(500).json({ message: 'Error fetching menu category by ID', error: error.message });
+    }
+});
+
+// Import other routes
+let authRoutes, userRoutes;
+
+try {
+    authRoutes = require('./routes/authRoutes');
+    console.log('Auth routes imported successfully');
+    app.use('/api/auth', authRoutes);
+    console.log('Auth routes registered');
+} catch (error) {
+    console.error('Error with auth routes:', error);
+}
+
+try {
+    userRoutes = require('./routes/userRoutes');
+    console.log('User routes imported successfully');
+    app.use('/api/users', userRoutes);
+    console.log('User routes registered');
+} catch (error) {
+    console.error('Error with user routes:', error);
+}
+
+console.log('Connecting to database...');
+// Test database connection & Sync models
+db.sequelize.authenticate()
+    .then(() => {
+        console.log('PostgreSQL Database connection has been established successfully.');
+        return db.sequelize.sync(); // Remove options like { force: true } or { alter: true } in production
+    })
+    .then(() => {
+        console.log('Database synchronized successfully.');
+        
+        // Start the server after database connection and sync
+        console.log('Starting server...');
+        app.listen(port, () => {
+            console.log(`Ketso Cafe backend (Fixed) listening at http://localhost:${port}`);
+            console.log(`Try accessing: http://localhost:${port}/api/categories`);
+            console.log(`Try accessing: http://localhost:${port}/api/categories/1`);
+        });
+    })
+    .catch(err => {
+        console.error('Unable to connect to the database or synchronize:', err);
+    }); 
