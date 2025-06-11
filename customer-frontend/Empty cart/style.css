@@ -1,0 +1,324 @@
+:root {
+  --image-0: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAOCAYAAAASVl2WAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABASURBVHgBzZHBCQAwCANjJ+n+S3QUR0mF+mzqq+CB+LiggoYLJGe0BSWjnAd/ypz0VWZAy2CgolzRIGTqcOSzNvL6w6BTYkz4AAAAAElFTkSuQmCC);
+  --custom-width: 100vw;
+  --design-width: 440;
+  --ratio: calc(var(--custom-width) / var(--design-width));
+}
+
+/* Default classes */
+.pos-abs {
+  position: absolute;
+}
+.fill-parent {
+  width: 100%;
+  height: 100%;
+}
+.bg-contain {
+  background-size: contain;
+}
+.bg-cover {
+  background-size: cover;
+}
+.bg-auto {
+  background-size: auto;
+}
+.bg-crop {
+  background-size: 100% 100%;
+}
+.bg-no-repeat {
+  background-repeat: no-repeat;
+}
+.pos-init {
+  top: 0px;
+  left: 0px;
+}
+.image-div {
+  background-color: transparent;
+  background-position: center;
+}
+/* Default classes end */
+
+body {
+  margin: 0px 0px;
+  padding: 0px;
+}
+.parent-div {
+  position: relative;
+  width: var(--custom-width);
+  height: calc(1101 * var(--ratio));
+  overflow: hidden;
+  margin: auto;
+  padding: 0px;
+  box-sizing: border-box;
+}
+.impty-cart-213514543 {
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+  z-index: 1;
+  transform: rotate(0deg);
+  overflow: hidden;
+  border-radius: 16px;
+  background: #ffffffff;
+}
+.depth-2-frame-1-213514544 {
+  width: 88.64%;
+  height: 19.8%;
+  top: -68.48%;
+  left: -20.91%;
+  z-index: 0;
+  transform: rotate(0deg);
+  border-radius: 16px;
+}
+.depth-3-frame-0-213514545 {
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+  z-index: 0;
+  transform: rotate(0deg);
+}
+.nodeBg-213514546,
+.nodeBg-213514529 {
+  background-position: center;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  opacity: 1;
+}
+.depth-4-frame-0-213514546 {
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+  z-index: 0;
+  transform: rotate(0deg);
+  overflow: hidden;
+  border-radius: 16px;
+  background: #004c6cff;
+}
+.frame-141010536-213514704 {
+  width: 100%;
+  height: 44.31%;
+  top: 0%;
+  left: 0%;
+  z-index: 1;
+  transform: rotate(0deg);
+}
+.frame-141010535-213514547 {
+  width: 100%;
+  height: 14.76%;
+  top: 0%;
+  left: 0%;
+  z-index: 0;
+  transform: rotate(0deg);
+}
+.depth-2-frame-0-213514548 {
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+  z-index: 0;
+  transform: rotate(0deg);
+  background: #236488ff;
+}
+.depth-3-frame-2-213514681 {
+  width: 10.91%;
+  height: 66.67%;
+  top: 22.22%;
+  left: 3.64%;
+  z-index: 0;
+  transform: rotate(0deg);
+}
+.depth-4-frame-0-213514682 {
+  width: 50%;
+  height: 50%;
+  top: 25%;
+  left: 0%;
+  z-index: 0;
+  transform: rotate(0deg);
+  overflow: hidden;
+}
+.depth-5-frame-0-213514685 {
+  width: 75%;
+  height: 62.5%;
+  top: 0%;
+  left: 0%;
+  z-index: 1;
+  transform: rotate(0deg);
+}
+.frame-213514683 {
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+  z-index: 0;
+  transform: rotate(0deg);
+  overflow: hidden;
+}
+.nodeBg-213514684 {
+  opacity: 1;
+  background-image: var(--image-0);
+}
+.vector-213514684 {
+  width: 33.33%;
+  height: 58.33%;
+  top: 20.83%;
+  left: 33.33%;
+  z-index: 0;
+  transform: rotate(0deg);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.ketso-cafe-213514550 {
+  width: 60%;
+  height: 66.67%;
+  top: 22.22%;
+  left: 20%;
+  z-index: 1;
+  transform: rotate(0deg);
+  text-align: center;
+  line-height: 0px;
+}
+.ketso-cafe-213514550-0 {
+  font-size: calc(24 * var(--ratio));
+
+  line-height: calc(26.399999618530273 * var(--ratio));
+
+  font-family: Fruktur;
+  font-weight: 400;
+
+  text-decoration: none;
+  text-transform: none;
+  white-space: pre-wrap;
+  color: #ffffffff;
+}
+.depth-3-frame-1-213514551 {
+  width: 10.91%;
+  height: 66.67%;
+  top: 22.22%;
+  left: 85.45%;
+  z-index: 2;
+  transform: rotate(0deg);
+}
+.depth-2-frame-1-213514527 {
+  width: 100%;
+  height: 85.24%;
+  top: 14.76%;
+  left: 0%;
+  z-index: 1;
+  transform: rotate(0deg);
+}
+.depth-3-frame-0-213514528 {
+  width: 92.73%;
+  height: 88.46%;
+  top: 5.77%;
+  left: 3.64%;
+  z-index: 0;
+  transform: rotate(0deg);
+}
+.depth-4-frame-0-213514529 {
+  width: 100%;
+  height: 61.94%;
+  top: 0%;
+  left: 0%;
+  z-index: 0;
+  transform: rotate(0deg);
+  overflow: hidden;
+  border-radius: 16px;
+}
+.depth-4-frame-1-213514530 {
+  width: 97.3%;
+  height: 14.14%;
+  top: 68.46%;
+  left: 1.35%;
+  z-index: 1;
+  transform: rotate(0deg);
+}
+.depth-5-frame-0-213514531 {
+  width: 42.32%;
+  height: 44.23%;
+  top: 0%;
+  left: 28.84%;
+  z-index: 0;
+  transform: rotate(0deg);
+}
+.your-cart-is-em-213514532,
+.browse-the-menu-213514534,
+.browse-menu-213514537 {
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+  z-index: 0;
+  transform: rotate(0deg);
+  text-align: center;
+  line-height: 0px;
+}
+.your-cart-is-em-213514532-0 {
+  font-size: calc(18 * var(--ratio));
+
+  line-height: calc(23 * var(--ratio));
+
+  font-family: Poppins;
+  font-weight: 600;
+
+  text-decoration: none;
+  text-transform: none;
+  white-space: pre-wrap;
+  color: #181c20ff;
+}
+.depth-5-frame-1-213514533 {
+  width: 100%;
+  height: 40.38%;
+  top: 59.62%;
+  left: 0%;
+  z-index: 1;
+  transform: rotate(0deg);
+}
+.browse-the-menu-213514534-0 {
+  font-size: calc(14 * var(--ratio));
+
+  line-height: calc(21 * var(--ratio));
+
+  font-family: Poppins;
+  font-weight: 300;
+
+  text-decoration: none;
+  text-transform: none;
+  white-space: pre-wrap;
+  color: #181c20ff;
+}
+.depth-4-frame-2-213514535 {
+  width: 30.64%;
+  height: 10.88%;
+  top: 89.12%;
+  left: 34.68%;
+  z-index: 2;
+  transform: rotate(0deg);
+  overflow: hidden;
+  border-radius: 4px;
+  background: #236488ff;
+}
+.depth-5-frame-0-213514536 {
+  width: 74.4%;
+  height: 52.5%;
+  top: 23.75%;
+  left: 12.8%;
+  z-index: 0;
+  transform: rotate(0deg);
+  overflow: hidden;
+}
+.browse-menu-213514537-0 {
+  font-size: calc(14 * var(--ratio));
+
+  line-height: calc(21 * var(--ratio));
+
+  font-family: Poppins;
+  font-weight: 400;
+
+  text-decoration: none;
+  text-transform: none;
+  white-space: pre-wrap;
+  color: #ffffffff;
+}
